@@ -55,3 +55,11 @@ npm install
 # Foreman is part of the Heroku Toolbelt
 foreman start -f Procfile
 ```
+
+
+Deploying to Heroku
+-------------------
+
+```bash
+# TODO: ...
+```

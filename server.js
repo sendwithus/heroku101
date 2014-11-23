@@ -23,7 +23,6 @@ var app = connect();
 // Serve index.html
 app.use(serveStatic(__dirname));
 
-
 // Listen to everything else
 app.use(function (req, res) {
     redisClient.zrange('tweets', 0, 50, function (err, tweets) {
