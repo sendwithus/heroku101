@@ -5,20 +5,31 @@
     <ul id="tweets"></ul>
     <script>
         var getTweets = function () {
+
+            // Create a new request object
             var request = new XMLHttpRequest();
+
+            // Add a listener for the request object
             request.onreadystatechange = function() {
+
+                // Only listen for the DONE (4) state with an HTTP 200 response
                 if (request.readyState === 4 && this.status === 200) {
                     var tweetList = document.getElementById('tweets');
                     var tweets = JSON.parse(request.responseText);
                     tweetList.innerHTML = '<li>' + tweets.join('</li><li>') + '</li>';
                 }
             };
+
+            // Call our server to get the tweets
             request.open('GET', '/tweets' , true);
             request.send();
         };
 
-        setInterval(getTweets, 1000);
+        // Refresh tweets right away
         getTweets();
+
+        // Continue to refresh every second
+        setInterval(getTweets, 1000);
     </script>
 </body>
 </html>
