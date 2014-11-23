@@ -3,5 +3,22 @@
 <body>
     <h1>Tweets</h1>
     <ul id="tweets"></ul>
+    <script>
+        var getTweets = function () {
+            var request = new XMLHttpRequest();
+            request.onreadystatechange = function() {
+                if (request.readyState === 4 && this.status === 200) {
+                    var tweetList = document.getElementById('tweets');
+                    var tweets = JSON.parse(request.responseText);
+                    tweetList.innerHTML = '<li>' + tweets.join('</li><li>') + '</li>';
+                }
+            };
+            request.open('GET', '/tweets' , true);
+            request.send();
+        };
+
+        setInterval(getTweets, 500);
+        getTweets();
+    </script>
 </body>
 </html>

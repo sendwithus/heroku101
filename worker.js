@@ -1,5 +1,19 @@
 var tweets = require('tweets');
+var urlParse = require('url').parse;
+var redis = require('redis');
 
+// Connect to Redis. This was copied from:
+//   https://devcenter.heroku.com/articles/redistogo#using-with-node-js
+if (process.env.REDISTOGO_URL) {
+    var rtg = urlParse(process.env.REDISTOGO_URL);
+    var redisClient = redis.createClient(rtg.port, rtg.hostname);
+    redis.auth(rtg.auth.split(':')[1]);
+} else {
+    var redisClient = redis.createClient();
+}
+
+
+// Initialize Twitter client
 var stream = new tweets({
     consumer_key: 'oCpymAniwdrID2CpKBqyochkX',
     consumer_secret: 'rLFngEpWKGlKbht2NqtJOz4lL0xhi98R1FbUbaazyIQPL7QAGf',
@@ -7,11 +21,22 @@ var stream = new tweets({
     access_token_secret: 'C2C9TeFv8P9iNd5Szmb69nsg1ZB0j3sU8hVEGBz7VdTgo'
 });
 
-// start streaming the public twitter stream for pizza
-stream.filter({ track: 'party' });
+
+// Start streaming keyword
+stream.filter({
+    track: 'bacon'
+});
 
 stream.on('tweet', function (tweet) {
-    console.log('@' + tweet.user.screen_name + ':' + tweet.text);
+
+    // Generate a string looking like "@MyUsername: My tweet"
+    tweetString = '@' + tweet.user.screen_name + ': ' + tweet.text;
+
+    // Save tweet to Redis
+    redisClient.zadd('tweets', -1 * Date.now(), tweetString);
+
+    console.log('Got Tweet:', tweetString);
 });
+
 
 console.log('Started Twitter worker');
