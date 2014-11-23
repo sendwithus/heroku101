@@ -4,8 +4,8 @@ var redis = require('redis');
 
 // Connect to Redis. This was copied from:
 //   https://devcenter.heroku.com/articles/redistogo#using-with-node-js
-if (process.env.REDISTOGO_URL) {
-    var rtg = urlParse(process.env.REDISTOGO_URL);
+if (process.env.REDISCLOUD_URL) {
+    var rtg = urlParse(process.env.REDISCLOUD_URL);
     var redisClient = redis.createClient(rtg.port, rtg.hostname);
     redis.auth(rtg.auth.split(':')[1]);
 } else {
