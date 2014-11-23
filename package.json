@@ -1,0 +1,28 @@
+{
+  "name": "heroku101",
+  "version": "1.0.0",
+  "description": "Project for Heroku 101 Talk for UVic Webdev Club",
+  "dependencies": {
+    "connect": "^3.3.3",
+    "redis": "^0.12.1",
+    "serve-static": "^1.7.1",
+    "tweets": "^0.0.6"
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sendwithus/heroku101"
+  },
+  "keywords": [
+    "heroku",
+    "twitter",
+    "stream"
+  ],
+  "author": "sendwithus",
+  "bugs": {
+    "url": "https://github.com/sendwithus/heroku101/issues"
+  },
+  "homepage": "https://github.com/sendwithus/heroku101"
+}
