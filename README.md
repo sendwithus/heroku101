@@ -4,6 +4,8 @@ Heroku 101 — Twitter Stream in Node.js
 This is the sample project that was used by the [sendwithus](https://www.sendwithus.com) team
 during the UVic Webdev club talk on Tuesday November 25, 2014.
 
+[Link to Demo](http://heroku-101.herokuapp.com/)
+
 _**Note**: this code was only tested on Mac OSX and Ubuntu, but the instructions should be similar
 on Windows._
 
