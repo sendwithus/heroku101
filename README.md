@@ -63,5 +63,14 @@ Deploying to Heroku
 -------------------
 
 ```bash
-# TODO: ...
+# Log into heroku toolbelt
+heroku login
+
+# Add Git remote to point to heroku
+git remote add heroku git@heroku.com:my-app-name.git
+
+# Commit changes to Git
+git add -A
+git commit -m "I made some changes"
+git push heroku master
 ```

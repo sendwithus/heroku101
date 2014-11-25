@@ -29,8 +29,9 @@ stream.filter({
 
 stream.on('tweet', function (tweet) {
 
-    // Generate a string looking like "@MyUsername: My tweet"
-    tweetString = '@' + tweet.user.screen_name + ': ' + tweet.text;
+    var screenName = tweet.user.screen_name;
+    var tweetText = tweet.text;
+    var tweetString = '@' + screenName + ': ' + tweetText;
 
     // Save tweet to Redis
     redisClient.zadd('tweets', -1 * Date.now(), tweetString);
