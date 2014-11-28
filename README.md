@@ -6,6 +6,8 @@ during the UVic Webdev club talk on Tuesday November 25, 2014.
 
 [Link to Demo](http://heroku-101.herokuapp.com/)
 
+[Link to Slides](https://docs.google.com/presentation/d/1WQfIYvEh4-E8TaFRpZ4PT3qpUx_wkeqfufmsXQ95bb8/edit?usp=sharing)
+
 _**Note**: this code was only tested on Mac OSX and Ubuntu, but the instructions should be similar
 on Windows._
 
